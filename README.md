@@ -1,4 +1,5 @@
-# Apuntes de GIT - SCESI
+# Trabajo Individual - Apuntes GIT
+Matias Marcelo Revollo Cornejo
 ## Clase 1 Lunes - 20/04/2026
 ### ¿Qué es GIT ? 
 Es como un checkpoint, crea puntos de guardado para nuestros archivos y que podamos volver atrás + poder ver el historial de lo que hemos hecho, no es una herramienta individual, se puede usar con otras personas también
@@ -6,8 +7,8 @@ Es como un checkpoint, crea puntos de guardado para nuestros archivos y que poda
 El creador de Linux (Linus Torvalds, nuestro dios)
 Él usaba email para recibir distribuciones y era bastante cansador, entonces él con su comunidad decidieron usar BitKeeper. Estos eran privativos, por asi decirlo celosos y solo debias usarlos a ellos "ni tu ni tus colaboradores usaran otro además de mi", pero alguien rompió la regla, bitkeeper los descubrió y les quito el acceso a su repo.
 Linus Torvalds se molestó y creó git, luego de 2 o 3 semanas de la rabia de Linus Torvalds.
-### ¿Cómo instalar git?
-#### Para Linux : 
+### ¿Cómo instalar GIT?
+#### Para Linux: 
 Nos dirigimos a la terminal
 Ponemos el comando
 ```
@@ -47,7 +48,8 @@ EXTRA              -> 10 pts
 ### DETALLES DE CADA AREA:
 #### Examen:
 Entrará TODO lo visto en clase(comandos, teoría, practica....)
-Entrará que Linus Torvals de la pura rabia creo git jsjajsa
+###### Pregunta de examen
+Linus Torvals de la pura rabia creo git jsjajsa
 #### Trabajo Grupal:
 Grupos de a 4
 Proyecto libre (Lenguaje y tema libre)
@@ -140,7 +142,7 @@ Para volver y no mandarlo a stage aun, usamos:
 ```
 git restore --staged nombreArchivo
 ```
-(Pregunta de examen) -> ¿Qué hace el --staged?
+###### Pregunta de examen -> ¿Qué hace el --staged?
 
 ##### Repositorio Local (Committed)
 Una vez que le hayamos dicho que estamos cambiando y guardando, git crea en base a los archivos el punto de guardado, y se van a los logs
@@ -189,10 +191,58 @@ refactor: para refactorización del código como cambios de nombre de variables 
 style: para cambios de formato, tabulaciones, espacios o puntos y coma, etc; no afectan al
 usuario.
 test: para tests o refactorización de uno ya existente.
-ENTRA AL EXAMEN ^
+###### Pregunta de examen ^
 ###### 5 Añade todo el contexto que se necesario en el cuerpo del commit
 Si añadimos algo que es realmente complejo y grande, tal que los 50 caracteres del punto 3 no son suficientes, te vas al cuerpo del commit
 ```
 git commit
 ```
 En este como titulo puedes poner algo corto, como lo harias antes (aunque no sea muy descriptivo) y en el cuerpo pones por puntos una descripcion mas detallada
+
+
+## Clase 3 Miercoles - 22/04/2026
+### ¿Cómo tener cuenta en GITHUB?
+Ingresamos a la página (githum.com), llenamos nuestros datos, como en cualquier página, NO usar la cuenta institucional, ya que cuando terminamos la carrera perdemos el acceso a ella y por lo tanto perdemos nuestra cuenta
+### ¿Cómo crear un repositorio?
+Nos vamos a la parte de Repositorio y le damos a New,  en el nombre del repo podemos ponerle el nombre que querramos, preferimos dejarlo en publico para que el auxi pueda revisarlo, en el add README.md lo dejamos en off, ya que deberiamos tener este, seleccionamos SSH
+### Conectar el GIT con GITHUB
+Abrimos nuestra terminal de git bash para Windows
+y ponemos el siguiente comando
+```
+ssh-keygen -t ed25519 -C "correoDeLaCuentaDeGitHub"
+```
+nos saldrá un código secreto por asi decirlo
+hacemos un
+```
+cat /rutaSecreta/
+```
+y luego de darle a enter, copiamos el codigo, volvemos a ir a GITHUB y pegamos el codigo que nos dio el git bash, creamos nuestra llave y para prbar si todo salio bien ponemos este comando
+```
+ssh -T git@github.com
+```
+le damos a 
+```
+yes
+```
+y nos deberia saludar con nuestro usuario de github en git
+### Conectar nuestro README.md con el repo creado
+Ejecutamos los siguientes comandos
+```
+git remote add origin git@github.com usuario/nombreRepo.git
+git branch -M main
+git push -u origin main
+```
+Ahora ya tenemos nuestro repo de forma remota
+###### PREGUNTA DE EXAMEN 
+comando para generar el secreto:
+```
+ssh-keygen -t ed25519 -C "correoDeLaCuentaDeGitHub"
+```
+
+En el resto de la clase hacemos algunas cosas con https, pero nos terminamos dando cuenta que pide el usuario de github, la contra.... y al final ni poniendo todo bien nos funciona, entonces por eso usamos ssh.
+
+### Bonita descripcion de perfil
+Si hacemos una buena descripcion de perfil nos ganamos 5 puntos, y si esta en ingles, vale 6, que super.
+
+![alt text](image.png)
+Aqui esta una imagen de por que falte ese dia auxi, soy el del problema del ojo :c
