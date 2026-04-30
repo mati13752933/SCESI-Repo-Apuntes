@@ -244,5 +244,147 @@ En el resto de la clase hacemos algunas cosas con https, pero nos terminamos dan
 ### Bonita descripcion de perfil
 Si hacemos una buena descripcion de perfil nos ganamos 5 puntos, y si esta en ingles, vale 6, que super.
 
+###### Razon de Falta
 ![alt text](image.png)
 Aqui esta una imagen de por que falte ese dia auxi, soy el del problema del ojo :c
+
+## Clase 4 Jueves - 23/04/2026
+### Git Remote
+Es el comando que le dice a nuestro la direccion de la que nuestra nube de traer/enviar informacion
+El siguiente comando nos permite ver donde apunta nuestro repo
+```
+git remote -v
+```
+Por ejemplo a donde se va a subir algo con push, o donde bajar con fetch
+El siguiente comando vincula nuestro repo con la nube
+```
+git remote add <apodo>"url"
+```
+Y este ultimo cambia la url donde apunta nuestro repo
+```
+git remote set-url <apodo>"url"
+```
+Si lo quiero setear y cambiar la url es seguir lo del codigo y en "url" poner la ruta a la que quiero cambiarlo
+### Multiples SSH
+Una llave ssh lo que hace es conectar tu compu con el github, en este caso cada cuente necesita su tunel, podemos verlo como puertas y que una llave abre cada puerta, no puede haber una llave para dos puertas
+Creamos llaves como ya sabiamos en otras clases, la diferencia es añadir al final:
+```
+-f ~/.ssh/nombreLlave
+```
+si hacemos un
+```
+ls -a
+```
+podemos ver ambas llaves
+nos creamos un archivo llamado config
+```
+touch config
+nano config
+```
+dentro ponemos
+```
+# Cuenta Personal (la de siempre)
+Host github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_ed25519
+# Cuenta del otro correo
+Host github-otroNombre
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_micorreo
+```
+Si no cambiamos los host, solo va a detectar el primero
+El host es el apodo/alias que le ponemos a nuestra conexion
+El hostName es el que usamos, si fuera gitLab ese seria el hostName
+El User git no se toca
+El IdentifyFile es mi llave
+
+Tenemos que probar si es que funciona la segunda con
+```
+cat nombreLlave
+```
+Copiamos el codigo secreto y vamos a la cuenta de github
+Hacemos el proceso que ya sabemos de añadir la llave con nuestra cuenta de github
+Luego nos va a saludar en git con el nombre de github y listo, voy a poder usar mis dos cuentas
+Si me voy a mi repositorio y subo un cambio, va a fallar, porque la key que esta usando es la otra, entonces lo unico que tenemos que hacer es
+```
+git remote set-url origin git@github-nombreUsuario/urlAlRepo
+```
+asi lo cambiamos, entonces, lo subimos y evitamos errores
+### Configuraciones locales
+En la primera clase hicimos configuraciones globales, que las vemos con
+```
+git config --global
+```
+Las configuraciones tienen jerarquias, son Sistema, global, local
+Si quiero que en un repo haya otro autor, hago lo mismo que antes, pero le quito el global, asi esta confi solo es para tu repo
+```
+git config user.name"nuevoNombre"
+git config user.email"nuevoCorreo"
+```
+Y esas serian mis locales
+Por si acaso, si hacemos un push, tiene prioridad el local
+##### Pregunta de examen:
+¿Cual es la diferencia entre usar o no --global en esta parte?
+### Git Checkout
+Es un comando que nos permite desplazarnos hacia atras, ver los puntos de guardado
+```
+git log --oneline
+```
+para ver los commits que hemos hecho
+En cada commit los primeros 7 numeros son como un codigo que hay que copiarlos
+```
+git checkout coigoDeCommit
+```
+### Detached HEAD
+Es cuando en lugar de apuntar a una rama, estamos apuntando a un commit, estamos en un punto de guradado, se ve mejor con
+```
+git log --oneline
+```
+Es mejor si no tocamos nada, ya que podemos alterar el resto de commits que pasaron luego de este
+Para volver a la rama principal hacemos
+```
+git checkout main
+```
+Y podemos verlo con
+```
+git log --oneline
+```
+#### ¿Qué pasa si hacemos un cambio?
+Ok, hicimos un commit cuando nos movimos y dejamos de estar en el main, de momento parece no pasar nada.
+Si ahora volvemos a nuestro 
+```
+git checkout rama
+```
+Nos dice que el commit que hicimos se esta quedando al aire, si queremos conservarlo, debemos crear una nueva rama
+Para crear una rama hacemos
+```
+git checkout -b feature/experimental-change
+```
+Ahora volvemos a nuestra rama main con
+```
+git checkout main 
+```
+Y ahora con 
+```
+git log --graph --oneline --all
+```
+Por ser ramas, veremos como una separacion entre ellas, pero sera notorio nuestro cambio en el tiempo
+### Buenas Pracicas del Checkout
+#### No trabajes mucho tiempo en 'Detached HEAD'
+Si quiero cambiarlo, mejor si lo del commit me lo llevo al inicio y trabajo desde ahi, trata de no volver desde atras
+#### Limpia tu Directorio de trabajo
+Para hacer 
+```
+git checkout
+```
+Debemos tener añadido y commiteado todo, si algo sigue en stage, no nos va a dejar, primero tenemos que guardar esas cosas.
+### Úsalo para aprender
+Deberiamos usarlo solo para ver los proyectos de alguien bueno o nosotros, es como para poder dar una vista atras y ver como fue cambiando todo, no es muy recomendable cambiar algo con esto
+###### Pregunta examen
+SSH sí va a entrar al examen, esto del checkout no tanto
+
+###### Razon de Falta
+![alt text](image-1.png)
+Aqui esta una imagen de por que falte ese dia, aqui ya empece a ir a la u auxi, soy el del problema del ojo :c
