@@ -457,3 +457,39 @@ Creas tu rama main que inicializa todo, luego te creas una rama develop, y para 
 ###### Razon de Falta
 ![alt text](image-2.png)
 Aqui esta una imagen de por que falte ese dia, aqui ya iba a la u sin el parche auxi, soy el del problema del ojo :c
+
+## Clase 6 Martes 28/04/2026
+### ¿Qué es git merge?
+Nos permite fusionar nuestras ramas en una sola para que las dos tengan tengan los commits hechos
+Podemos usar 
+```
+git merge -no-ff nombreRama
+```
+que evita que se pierda el historial y te fuerce a hacer las ramas sin que estas se pierdan, aun si las eliminas
+### ¿Qué es git fetch?
+Nos sirve para poder trabajar en equipo
+Lo tenemos que ejecutar al inicio, antes de trabajar y de subir cambios, mira ramas y mira los cambios.
+```
+Este puede ser un buen orden
+git checkout develop
+git fetch
+git pull origin develop
+```
+### ¿Qué es git pull?
+Trae todos los cambios de la rama o repo... Al repositorio local, te lo actualiza, y si no trabajas con eso se pueden generar conflictos
+Para usarlo con rama es
+```
+git pull origin rama
+```
+Git nos reporta un error cuando hay un conflicto, que es cuando 2 personas editan algo y pues git no sabe que hacer, cual guardar... entonces le da la responsabilidad al usuario
+Para poder solucionarlo entramos en el archivo del conclicto y con nano vamos viendo lo que queremos y no
+### ¿Qué es git push?
+Este comando que sube tus cambios al repositorio remoto de esa rama. Se usa también con origin y el nombre de la rama asi evitamos problemas
+
+#### Git fetch vs Git pull
+Mientras que fetch solo te avisa si hay novedades en el servidor, pull descarga y aplica esos cambios directamente en tu rama local.
+#### Limpieza
+Después de subir los cambios finales con push, se recomienda borrar la rama local con git branch -D para mantener el proyecto ordenado
+
+Lo que hicimos en esta clase fue mas pratico, por eso mis apnutes de este dia no son muy largos, tmabien pq recien estaba volviendo de la operacion, soy el del ojo auxi.
+
