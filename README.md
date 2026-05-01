@@ -142,7 +142,8 @@ Para volver y no mandarlo a stage aun, usamos:
 ```
 git restore --staged nombreArchivo
 ```
-###### Pregunta de examen -> ¿Qué hace el --staged?
+###### Pregunta de examen 
+¿Qué hace el --staged?
 
 ##### Repositorio Local (Committed)
 Una vez que le hayamos dicho que estamos cambiando y guardando, git crea en base a los archivos el punto de guardado, y se van a los logs
@@ -380,7 +381,7 @@ Para hacer
 git checkout
 ```
 Debemos tener añadido y commiteado todo, si algo sigue en stage, no nos va a dejar, primero tenemos que guardar esas cosas.
-### Úsalo para aprender
+#### Úsalo para aprender
 Deberiamos usarlo solo para ver los proyectos de alguien bueno o nosotros, es como para poder dar una vista atras y ver como fue cambiando todo, no es muy recomendable cambiar algo con esto
 ###### Pregunta examen
 SSH sí va a entrar al examen, esto del checkout no tanto
@@ -388,3 +389,71 @@ SSH sí va a entrar al examen, esto del checkout no tanto
 ###### Razon de Falta
 ![alt text](image-1.png)
 Aqui esta una imagen de por que falte ese dia, aqui ya empece a ir a la u auxi, soy el del problema del ojo :c
+
+## Clase 5 Lunes 27/04/2026
+Clase super importante para el trabajo grupal
+### Ramas
+#### ¿Qué son las ramas?
+Son bifurcaciones de una rama principal, crean nuevos caminos del codigo, paralelos a otras ramas que se pueden generar.
+Trabajamos todo en nuestro main, pero es en teoria una mala practica, porque nso motiva a no tocar el codigo.
+Nos permiten trabajar en equipo, cada persona trabaja en su codigo sin necesidad de chocar entre ellos
+#### ¿Cómo crear una rama?
+El siguiente comando nos enlista las ramas que tenemos
+```
+git branch
+```
+Tambien nos muestra en que rama nos encontramos
+El siguiente comando nos crea una rama
+```
+git brunch nombreRama 
+```
+Contiene todo el codigo que hasta ese momento tenia el main
+El siguiente comando elimina una rama
+```
+git brunch -D nombreRama
+```
+Los de windows pueden usar 
+```
+git brunch *
+```
+para ver en que rama estan
+Si creamos una rama dentro de otra es cuando estamos hacienco ramas alternas...
+##### Checkout vs Switch
+Antes, le estaban dando mil funcionalidades a git checkout, servia para cambiar de ramas, crearlas, volver en el tiempo en commits, trabaja con ramas, commits, archivos, aunque puede provocar algunos erorres al moverte en el tiempo
+Switch solo servia para crear ramas y para cambiar entre ellas, es mas seguro que checkout a la hora de evitar errores
+### ¿Qué es GITFLOW?
+Es un flujo de trabajo,basicamente nos permite trabajar en forma ordenada, para que quien sea vea sus logs en el proceso.
+El proposito de main, es guardar el codigo que funciona, nos podemos crear una rama develop
+```
+git checkout -b develop
+```
+Aqui estan nuestro codigo en produccion
+### ¿Cómo funciona GITFLOW?
+#### Main
+Es la rama principal que renemos por defecto al crear un repositorio, su proposito es contener el codigo que se encuenntra en produccion
+#### Develop
+Es una rama de preproduccion, su proposito es tener codigo que aun se esta probando, incluso algunas que no hayan sido probadas aun, pero que las mandaras a main en algun momento.
+#### Ramas de apoyo
+Pueden ser de tipo feature,release y hotfix
+##### Feature
+Si queremos declarar una funcion, debemos crearnos una rama y hacerlo en ella.
+```
+git checkout -n feature/algunaFuncionaldad
+```
+Es una buena practica
+##### Release
+Queremos poner a prueba a nuestra funcion y la vamos a testear con casos
+```
+git checkout -n release/algunaFuncionaldad
+```
+##### Hotfix
+Son ramas que usamos si es que vemos que hay un error en main, como llego ese error a main ? seguro no probamos lo suficiente en release, pero podemos crearla en main y se encarga de resolver el problema rapido
+```
+git checkout -n hotfix/algunaFuncionaldad
+```
+### Reumen de GITFLOW que el auxi dio al final
+Creas tu rama main que inicializa todo, luego te creas una rama develop, y para cada feature nueva que hagas,te creas una rama feature que decriba tu funcionalidad nueva, a la hora de mergear eliminamos la rama feature. En la siguiente clase veremos mejor el merge.
+
+###### Razon de Falta
+![alt text](image-2.png)
+Aqui esta una imagen de por que falte ese dia, aqui ya iba a la u sin el parche auxi, soy el del problema del ojo :c
