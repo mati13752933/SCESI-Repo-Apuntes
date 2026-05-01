@@ -390,7 +390,7 @@ SSH sí va a entrar al examen, esto del checkout no tanto
 ![alt text](image-1.png)
 Aqui esta una imagen de por que falte ese dia, aqui ya empece a ir a la u auxi, soy el del problema del ojo :c
 
-## Clase 5 Lunes 27/04/2026
+## Clase 5 Lunes - 27/04/2026
 Clase super importante para el trabajo grupal
 ### Ramas
 #### ¿Qué son las ramas?
@@ -458,7 +458,7 @@ Creas tu rama main que inicializa todo, luego te creas una rama develop, y para 
 ![alt text](image-2.png)
 Aqui esta una imagen de por que falte ese dia, aqui ya iba a la u sin el parche auxi, soy el del problema del ojo :c
 
-## Clase 6 Martes 28/04/2026
+## Clase 6 Martes - 28/04/2026
 ### ¿Qué es git merge?
 Nos permite fusionar nuestras ramas en una sola para que las dos tengan tengan los commits hechos
 Podemos usar 
@@ -492,4 +492,64 @@ Mientras que fetch solo te avisa si hay novedades en el servidor, pull descarga 
 Después de subir los cambios finales con push, se recomienda borrar la rama local con git branch -D para mantener el proyecto ordenado
 
 Lo que hicimos en esta clase fue mas pratico, por eso mis apnutes de este dia no son muy largos, tmabien pq recien estaba volviendo de la operacion, soy el del ojo auxi.
+
+## Clase 7 Miercoles - 29/04/2026
+### ¿Qué es un Pull Request?
+Es la forma profesional de trabajar. No es un comando de Git, sino una solicitud en GitHub para que el equipo revise tu código antes de que este se una a la rama principal (código base).
+### ¿Cómo crear un pull request?
+
+Tenemos que hacer 
+```
+git push origin rama
+```
+Y debes dirigirte a github.com y seguir los pasos del siguiente tutorial
+(https://youtu.be/4CeMKqloOJc)
+
+### El Flujo de Trabajo Profesional 
+
+```
+git checkout develop
+git fetch
+git pull origin develop
+git checkout rama # Agregas -b si estás creando la rama
+git merge develop # Solo si hubo cambios en develop
+# Trabajas en tu rama
+git push origin rama # Agregas -u si es la primera vez que subes cambios al repositorio remoto
+git checkout develop
+git fetch
+git checkout rama
+git merge develop # Solo si hubo cambios en develop antes de hacer la PR
+# Resuelves manualmente los archivos fallidos y sus conflictos
+git add .
+git commit
+[Ctrl + O, Enter, Ctrl + X](depende si usan nano)
+git push origin rama
+# Sigues el flujo mostrado en “¿Cómo crear un PR?
+```
+### ¿Por qué usamos los PRs sí ya podemos trabajar normalmente sin ellos?
+Aunque es técnicamente posible trabajar sin ellos, los PRs se utilizan principalmente por seguridad y control de calidad.  
+
+#### Gestión de Riesgos: 
+Evita que cualquier colaborador fusione código (merge) sin supervisión, lo que previene errores accidentales o la introducción de código malicioso.  
+
+#### Seguridad ante Amenazas:
+Actúa como un filtro contra posibles ataques externos o usuarios que intenten comprometer el repositorio ganándose la confianza del equipo.  
+
+#### Debate y Deliberación: 
+Obliga al equipo a revisar los cambios, permitiendo que todos entiendan qué se está implementando, quién lo hace y dando la oportunidad de presentar opiniones u oposiciones antes de unirlo al código base.
+
+### Protección del Repositorio
+Saber que los PRs son importantes no es suficiente si no se aplican restricciones técnicas.  
+
+#### Limitación Real: 
+Aunque se confíe en los colaboradores, es necesario configurar el repositorio para limitar su capacidad de unir código directamente.  
+
+#### Reglas de Colaboración:
+Se deben implementar medidas técnicas (como se detalla en el video de la clase) para asegurar que nadie pueda saltarse el proceso de revisión y aprobación.
+
+### Colaboración Externa sin invitacin
+Es posible contribuir a un proyecto incluso si no eres un colaborador invitado oficialmente al repositorio.  
+
+#### Contribuciones Abiertas 
+Como demostró el postulante Andre durante la clase, existen mecanismos (como el flujo de Fork y PR externo) que permiten a cualquier persona proponer mejoras o cambios.  
 
