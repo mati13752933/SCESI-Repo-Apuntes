@@ -553,3 +553,50 @@ Es posible contribuir a un proyecto incluso si no eres un colaborador invitado o
 #### Contribuciones Abiertas 
 Como demostró el postulante Andre durante la clase, existen mecanismos (como el flujo de Fork y PR externo) que permiten a cualquier persona proponer mejoras o cambios.  
 
+## Clase 8 Jueves - 30/04/2026
+Apuntes de esta clase solo sera de los comandos, ya que esl la ultima
+Pese a que borremos las ramas de forma loca, no se borran de forma remota, un ejemplo es
+git switch develop
+Si hacemos un cambio en una rama, y nos queremos cambiar a otra, nos dice que no hemos guradado los cambios
+Nos dice que hagamos un commit para salirnos de esaa rama
+```
+git stash -m "cambioInnecesario"
+```
+Si hago 
+```
+git status
+```
+no saldra el stash
+un stash funciona como una pequeña lista que lo guarda
+Guarda sin hacer commits
+```
+git stash list
+```
+Y ahora si nos sale lo que hicimos
+Con 
+```
+git stash pop
+```
+Para llevar todo
+Con 
+```
+git diff nombreRama
+```
+Podemos ver los cambios, nos los muestra con rojito y verde
+Y si hago
+```
+git diff rama1 rama2
+```
+Nos sale la diferencia entre las ramas
+
+Git diff --staged
+```
+git diff --staged .
+```
+Ver los cambios que ya agregaste al staging (git add) en todos los archivos del directorio actual (.).
+
+Git diff --staged archivo
+```
+git diff --staged archivo
+```
+Ver los cambios de un archivo específico que ya están en staging (listos para commit).
